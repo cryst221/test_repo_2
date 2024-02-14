@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Django app</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.6.1/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="flex flex-col p-4">
+
+
+
+
+    <div class="navbar bg-base-100">
+        <div class="flex-1">
+            <a class="btn btn-ghost text-xl" href="{% url 'index:home' %}">MyApp</a>
+        </div>
+        {% if request.user.is_authenticated %}
+        <div class="mr-4">
+            <a href="{% url 'auth:logout' %}">
+                <button class="btn btn-outline btn-sm ">Logout</button>
+            </a>
+        </div>
+        <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+            <div class="w-10 rounded-full">
+              <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+            </div>
+        </div>
+
+        {% else %}
+        
+        <div>
+            <a href=" {% url 'auth:login' %}">
+            <button class="btn btn-outline mr-4 btn-sm">
+                Login
+            </button>
+            </a>
+        </div>
+
+        {% endif %}
+
+    </div>
+
+
+
+
+    {% block content %}
+    {% endblock %}
+
+
+
+
+</body>
+
+</html>
